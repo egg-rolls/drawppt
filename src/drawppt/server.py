@@ -3,7 +3,7 @@
 import asyncio
 from mcp.server import Server, InitializationOptions
 from mcp.server.stdio import stdio_server
-from mcp.types import ServerCapabilities
+from mcp.types import ServerCapabilities, ToolsCapability
 
 from .session import SessionManager
 from .tools import register_tools
@@ -23,7 +23,7 @@ async def async_main():
     initialization_options = InitializationOptions(
         server_name="drawppt",
         server_version="0.2.0",
-        capabilities=ServerCapabilities(),
+        capabilities=ServerCapabilities(tools=ToolsCapability()),
     )
 
     async with stdio_server() as (read_stream, write_stream):
